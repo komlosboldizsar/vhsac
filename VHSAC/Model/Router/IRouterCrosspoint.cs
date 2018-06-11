@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHSAC.Models.Router
+namespace VHSAC.Model.Router
 {
-    class LeitchRouter
+    interface IRouterCrosspoint
     {
+        void Take();
     }
 }

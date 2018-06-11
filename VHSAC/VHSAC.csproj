@@ -53,10 +53,16 @@
     </Compile>
     <Compile Include="Logger\FileLogger.cs" />
     <Compile Include="Logger\Logger.cs" />
-    <Compile Include="Models\CaptureDevice.cs" />
-    <Compile Include="Models\LeitchRouter.cs" />
-    <Compile Include="Models\VTR.cs" />
-    <Compile Include="Models\VTRController.cs" />
+    <Compile Include="Model\CaptureDevice\CaptureState.cs" />
+    <Compile Include="Model\CaptureDevice\ICapture.cs" />
+    <Compile Include="Model\CaptureDevice\ICaptureDevice.cs" />
+    <Compile Include="Model\CaptureDevice\WinDVCaptureDevice.cs" />
+    <Compile Include="Model\Router\IRouterCrosspoint.cs" />
+    <Compile Include="Model\Router\LeitchRouter.cs" />
+    <Compile Include="Model\VTRController\PhysicalVTRState.cs" />
+    <Compile Include="Model\VTR\VTR.cs" />
+    <Compile Include="Model\VTR\VTRState.cs" />
+    <Compile Include="Model\VTRController\Controller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
