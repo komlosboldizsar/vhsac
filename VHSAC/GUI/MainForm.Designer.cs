@@ -29,6 +29,11 @@ namespace VHSAC
         private void InitializeComponent()
         {
             this.vtrControllerContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.startBatchButton = new System.Windows.Forms.Button();
+            this.stopBatchButton = new System.Windows.Forms.Button();
+            this.resetAllButton = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // vtrControllerContainer
@@ -37,23 +42,67 @@ namespace VHSAC
             this.vtrControllerContainer.AutoSize = true;
             this.vtrControllerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtrControllerContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.vtrControllerContainer.Location = new System.Drawing.Point(0, 0);
+            this.vtrControllerContainer.Location = new System.Drawing.Point(0, 35);
             this.vtrControllerContainer.Name = "vtrControllerContainer";
-            this.vtrControllerContainer.Size = new System.Drawing.Size(540, 361);
+            this.vtrControllerContainer.Size = new System.Drawing.Size(539, 326);
             this.vtrControllerContainer.TabIndex = 0;
             this.vtrControllerContainer.WrapContents = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.resetAllButton);
+            this.panel1.Controls.Add(this.stopBatchButton);
+            this.panel1.Controls.Add(this.startBatchButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(539, 35);
+            this.panel1.TabIndex = 0;
+            // 
+            // startBatchButton
+            // 
+            this.startBatchButton.Location = new System.Drawing.Point(8, 6);
+            this.startBatchButton.Name = "startBatchButton";
+            this.startBatchButton.Size = new System.Drawing.Size(75, 23);
+            this.startBatchButton.TabIndex = 0;
+            this.startBatchButton.Text = "Start batch";
+            this.startBatchButton.UseVisualStyleBackColor = true;
+            this.startBatchButton.Click += new System.EventHandler(this.startBatchButton_Click);
+            // 
+            // stopBatchButton
+            // 
+            this.stopBatchButton.Location = new System.Drawing.Point(89, 6);
+            this.stopBatchButton.Name = "stopBatchButton";
+            this.stopBatchButton.Size = new System.Drawing.Size(75, 23);
+            this.stopBatchButton.TabIndex = 1;
+            this.stopBatchButton.Text = "Stop batch";
+            this.stopBatchButton.UseVisualStyleBackColor = true;
+            this.stopBatchButton.Click += new System.EventHandler(this.stopBatchButton_Click);
+            // 
+            // resetAllButton
+            // 
+            this.resetAllButton.Location = new System.Drawing.Point(452, 6);
+            this.resetAllButton.Name = "resetAllButton";
+            this.resetAllButton.Size = new System.Drawing.Size(75, 23);
+            this.resetAllButton.TabIndex = 2;
+            this.resetAllButton.Text = "Reset all";
+            this.resetAllButton.UseVisualStyleBackColor = true;
+            this.resetAllButton.Click += new System.EventHandler(this.resetAllButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(540, 361);
+            this.ClientSize = new System.Drawing.Size(539, 361);
             this.Controls.Add(this.vtrControllerContainer);
+            this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 600);
+            this.MaximumSize = new System.Drawing.Size(555, 600);
             this.Name = "MainForm";
             this.Text = "VHS Archivation Controller";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -62,6 +111,10 @@ namespace VHSAC
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel vtrControllerContainer;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button startBatchButton;
+        private System.Windows.Forms.Button resetAllButton;
+        private System.Windows.Forms.Button stopBatchButton;
     }
 }
 

@@ -30,5 +30,22 @@ namespace VHSAC
             }
         }
 
+        #region Button click handlers
+        private void startBatchButton_Click(object sender, EventArgs e)
+        {
+            BatchManager.Start();
+        }
+
+        private void stopBatchButton_Click(object sender, EventArgs e)
+        {
+            BatchManager.Stop();
+        }
+
+        private void resetAllButton_Click(object sender, EventArgs e)
+        {
+            BatchManager.ResetAll();
+        }
+        #endregion
+
     }
 }
