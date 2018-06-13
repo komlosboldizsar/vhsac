@@ -15,7 +15,7 @@ namespace VHSAC.Model.CaptureDevice
 
         private object _syncRoot = new object();
 
-        private static readonly string WINDV_EXECUTABLE_NAME = "";
+        private static readonly string WINDV_EXECUTABLE_NAME = "windv.exe";
 
         public ICapture StartCapture(string fileName)
         {
@@ -121,7 +121,7 @@ namespace VHSAC.Model.CaptureDevice
                         _stopFailure.Set();
                     Thread.Sleep(500);
                     Length = (int)(_lengthStopwatch.ElapsedMilliseconds / 1000);
-                    if (WaitHandle.WaitAny(waitHandles, 1) > 0)
+                    if (WaitHandle.WaitAny(waitHandles, 1) != WaitHandle.WaitTimeout)
                         break;
                 }
                 stopThread();
@@ -141,7 +141,13 @@ namespace VHSAC.Model.CaptureDevice
 
                 if (_process != null)
                 {
-                    _process.Kill();
+                    try
+                    {
+                        _process.CloseMainWindow();
+                        _process.Close();
+                    }
+                    catch
+                    { }
                     _process = null;
                 }
 
