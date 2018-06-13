@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VHSAC.Model.VTR;
+using VHSAC.GUI.Helpers;
 
 namespace VHSAC.GUI
 {
@@ -38,13 +39,18 @@ namespace VHSAC.GUI
 
         private void vtrStateChangedHandler(VTR vtr, VTRState newState)
         {
-            setStatePanel(newState);
-            setButtonsEnableState(newState);
+            this.InvokeIfRequired(vtrControl => {
+                vtrControl.setStatePanel(newState);
+                vtrControl.setButtonsEnableState(newState);
+            });
         }
 
         private void vtrCaptureLengthChangedHandler(VTR vtr, int newLength)
         {
-            setCaptureLength(newLength);
+            this.InvokeIfRequired(vtrControl =>
+            {
+                vtrControl.setCaptureLength(newLength);
+            });
         }
 
         private void setNameLabel(string name)
@@ -54,10 +60,6 @@ namespace VHSAC.GUI
 
         private void setStatePanel(VTRState state)
         {
-            if (InvokeRequired) {
-                Invoke(new Action(() => setStatePanel(state)), null);
-                return;
-            }
             switch (state)
             {
                 case VTRState.Reset:
@@ -80,11 +82,6 @@ namespace VHSAC.GUI
 
         private void setButtonsEnableState(VTRState state)
         {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => setButtonsEnableState(state)), null);
-                return;
-            }
             startButton.Enabled = (state == VTRState.Reset);
             stopButton.Enabled = (state == VTRState.Capturing);
             resetButton.Enabled = (state != VTRState.Capturing);
