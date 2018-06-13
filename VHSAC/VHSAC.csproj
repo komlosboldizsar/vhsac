@@ -69,6 +69,7 @@
     <Compile Include="Model\Router\LeitchRouter.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="Model\VTRController\PhysicalVTRState.cs" />
+    <Compile Include="Model\VTR\BatchManager.cs" />
     <Compile Include="Model\VTR\VTR.cs" />
     <Compile Include="Model\VTR\VTRState.cs" />
     <Compile Include="Model\VTRController\Controller.cs" />
