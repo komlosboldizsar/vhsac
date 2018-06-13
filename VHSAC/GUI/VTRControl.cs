@@ -130,7 +130,7 @@ namespace VHSAC.GUI
         {
             startButton.Enabled = (state == VTRState.Reset);
             stopButton.Enabled = (state == VTRState.Capturing);
-            resetButton.Enabled = (state != VTRState.Capturing);
+            resetButton.Enabled = (state != VTRState.Capturing) && (state != VTRState.Starting) && (state != VTRState.Stopping);
         }
 
         private void setOtherElementsEnableState(VTRState state)
