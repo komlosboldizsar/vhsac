@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VHSAC.Model.VTRController
 {
-    class Controller
+    public class Controller
     {
 
         private string _name;

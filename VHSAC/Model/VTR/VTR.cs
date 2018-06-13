@@ -62,9 +62,12 @@ namespace VHSAC.Model.VTR
         ManualResetEvent _stopManually = new ManualResetEvent(false);
         ManualResetEvent _stopFailure = new ManualResetEvent(false);
 
-        public VTR(string name)
+        public VTR(string name, List<IRouterCrosspoint> routerCrosspoints, ICaptureDevice captureDevice, Controller.Adapter controllerAdapter)
         {
             Name = name;
+            _routerCrosspoints = routerCrosspoints;
+            _captureDevice = captureDevice;
+            _controllerAdapter = controllerAdapter;
         }
 
         public void StartCapture()

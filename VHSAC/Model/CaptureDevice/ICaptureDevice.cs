@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VHSAC.Model.CaptureDevice
 {
-    interface ICaptureDevice
+    public interface ICaptureDevice
     {
         ICapture StartCapture(string fileName);
         void StopCapture();
