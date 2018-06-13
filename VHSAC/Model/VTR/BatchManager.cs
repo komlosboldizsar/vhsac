@@ -14,7 +14,7 @@ namespace VHSAC.Model.VTR
 
             // Check states
             foreach (VTR vtr in Program.VTRs)
-                if (vtr.UseInNextBatch || (vtr.State != VTRState.Reset))
+                if (vtr.UseInNextBatch && (vtr.State != VTRState.Reset))
                     throw new Exception(/* TODO */);
 
             startNextVTR();
