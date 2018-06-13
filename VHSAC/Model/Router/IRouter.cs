@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace VHSAC.Model.Router
 {
-    public interface IRouterCrosspoint
+    interface IRouter
     {
-        void Take();
     }
 }

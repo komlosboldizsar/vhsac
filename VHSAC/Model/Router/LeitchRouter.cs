@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VHSAC.Model.Router
 {
-    public class LeitchRouter: IDisposable
+    public class LeitchRouter: IRouter, IDisposable
     {
 
         private string _name;
