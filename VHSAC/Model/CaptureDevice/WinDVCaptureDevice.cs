@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,6 +17,8 @@ namespace VHSAC.Model.CaptureDevice
         private object _syncRoot = new object();
 
         private static readonly string WINDV_EXECUTABLE_NAME = "windv.exe";
+
+        private static readonly int WINDV_CAPTURE_LENGTH = 3600 * (4 + 1);
 
         public ICapture StartCapture(string fileName)
         {
@@ -60,6 +63,8 @@ namespace VHSAC.Model.CaptureDevice
 
             public Capture(WinDVCaptureDevice device, string fileName)
             {
+                if (fileName == "")
+                    throw new Exception("Filename for capture can't be empty!");
                 _device = device;
                 _fileName = fileName;
             }
@@ -169,12 +174,13 @@ namespace VHSAC.Model.CaptureDevice
 
             private ProcessStartInfo getProcessStartInfo()
             {
+                string filePath = Settings.FileSavepath + Path.DirectorySeparatorChar + _fileName;
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.CreateNoWindow = false;
                 startInfo.UseShellExecute = false;
                 startInfo.FileName = WINDV_EXECUTABLE_NAME;
                 startInfo.WindowStyle = ProcessWindowStyle.Normal;
-                startInfo.Arguments = _fileName; // TODO
+                startInfo.Arguments = string.Format("capture {0} {1}", WINDV_CAPTURE_LENGTH, filePath);
                 return startInfo;
             }
 
