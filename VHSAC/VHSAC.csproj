@@ -51,20 +51,34 @@
     <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\VTRControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\VTRControl.Designer.cs">
+      <DependentUpon>VTRControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logger\FileLogger.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Model\CaptureDevice\CaptureState.cs" />
     <Compile Include="Model\CaptureDevice\ICapture.cs" />
     <Compile Include="Model\CaptureDevice\ICaptureDevice.cs" />
     <Compile Include="Model\CaptureDevice\WinDVCaptureDevice.cs" />
+    <Compile Include="Model\Router\IRouter.cs" />
     <Compile Include="Model\Router\IRouterCrosspoint.cs" />
     <Compile Include="Model\Router\LeitchRouter.cs" />
+    <Compile Include="Model\Settings.cs" />
     <Compile Include="Model\VTRController\PhysicalVTRState.cs" />
     <Compile Include="Model\VTR\VTR.cs" />
     <Compile Include="Model\VTR\VTRState.cs" />
     <Compile Include="Model\VTRController\Controller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VTRControl.resx">
+      <DependentUpon>VTRControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

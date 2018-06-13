@@ -1,0 +1,24 @@
+<vhsac>
+	<settings>
+		<savepath>C:\videos</savepath>
+	</settings>
+	<routers>
+		<leitchrouter id="1" name="MTX1" serialport="COM5" />
+	</routers>
+	<controllers>
+		<controller id="1" name="Controller1" serialport="COM7" />
+	</controllers>
+	<capturedevices>
+		<windvcapture id="1" name="FW-1" /> 
+	</capturedevices>
+	<vtrs>
+		<vtr name="Pana MSC-800/1" capturedevice="1" controller="1" controllerchannel="1">
+			<leitchcrosspoint router="1" level="0" destination="1" source="1" />
+			<leitchcrosspoint router="1" level="1" destination="1" source="1" />
+		</vtr>
+		<vtr name="Pana MSC-800/2" capturedevice="1" controller="1" controllerchannel="2">
+			<leitchcrosspoint router="1" level="0" destination="1" source="2" />
+			<leitchcrosspoint router="1" level="1" destination="1" source="2" />
+		</vtr>
+	</vtrs>
+</vhsac>
