@@ -247,6 +247,8 @@ namespace VHSAC.Model.VTR
             _capture = null;
             _stateCheckThread = null;
 
+            Thread.Sleep(1000);
+
             switch (reason)
             {
                 case StopReason.TapeEnded:

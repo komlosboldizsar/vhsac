@@ -23,10 +23,14 @@ namespace VHSAC.Model.VTR
 
         public static void Stop()
         {
-            currentVTR.StateChanged -= currentVTRStateChangedHandler;
+
+            if(currentVTR != null)
+                currentVTR.StateChanged -= currentVTRStateChangedHandler;
+
             foreach (VTR vtr in Program.VTRs)
                 if(vtr.State == VTRState.Capturing)
                     vtr.StopCapture();
+
         }
 
         public static void ResetAll()
