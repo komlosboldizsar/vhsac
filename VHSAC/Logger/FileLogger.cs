@@ -18,12 +18,18 @@ namespace VHSAC.Logger
             Logger.Handlers += NewLogMessageHandler;
         }
 
-        public void NewLogMessageHandler(string message)
+        public void NewLogMessageHandler(string message, DateTime timestamp)
         {
-            using (StreamWriter sw = File.AppendText(_fileName))
+            try
             {
-                sw.WriteLine(message);
+                using (StreamWriter sw = File.AppendText(_fileName))
+                {
+                    string formattedMessage = string.Format("[{0}] {1}", timestamp.ToString("yyyy.MM.dd. HH:mm:ss"), message);
+                    sw.WriteLine(formattedMessage);
+                }
             }
+            catch
+            { }
         }
 
     }
