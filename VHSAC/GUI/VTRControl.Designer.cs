@@ -263,7 +263,7 @@
             this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.statePanel_Reset);
             this.Controls.Add(this.nameLabel);
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 0);
+            this.Margin = new System.Windows.Forms.Padding(7, 3, 7, 4);
             this.Name = "VTRControl";
             this.Size = new System.Drawing.Size(510, 146);
             this.ResumeLayout(false);
