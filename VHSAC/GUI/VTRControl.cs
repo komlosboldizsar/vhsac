@@ -76,6 +76,7 @@ namespace VHSAC.GUI
         private void updateByStateChange(VTRState newState)
         {
             setStatePanels(newState);
+            setStateLabel(newState);
             setButtonsEnableState(newState);
             setOtherElementsEnableState(newState);
         }
@@ -89,6 +90,40 @@ namespace VHSAC.GUI
             statePanel_Ready.BackColor = (state == VTRState.Ready) ? Color.Lime : Color.White;
             statePanel_ManuallyStopped.BackColor = (state == VTRState.ManuallyStopped) ? Color.SeaGreen : Color.White;
             statePanel_Failure.BackColor = (state == VTRState.Failure) ? Color.Red : Color.White;
+        }
+
+        private void setStateLabel(VTRState state)
+        {
+
+            string stateLabelText = "";
+            switch (state)
+            {
+                case VTRState.Reset:
+                    stateLabelText = "reset";
+                    break;
+                case VTRState.Starting:
+                    stateLabelText = "starting capturing";
+                    break;
+                case VTRState.Capturing:
+                    stateLabelText = "capturing";
+                    break;
+                case VTRState.Stopping:
+                    stateLabelText = "stopping capturing";
+                    break;
+                case VTRState.Ready:
+                    stateLabelText = "ready";
+                    break;
+                case VTRState.ManuallyStopped:
+                    stateLabelText = "ready (manually stopped)";
+                    break;
+                case VTRState.Failure:
+                    stateLabelText = "failure";
+                    break;
+            }
+            stateLabel.Text = "State: " + stateLabelText;
+
+            captureFilenameLabel.Visible = (state == VTRState.Starting);
+
         }
 
         private void setButtonsEnableState(VTRState state)
@@ -109,6 +144,7 @@ namespace VHSAC.GUI
         {
             if (captureFilename != captureFilenameTextbox.Text)
                 captureFilenameTextbox.Text = captureFilename;
+            captureFilenameLabel.Text = captureFilename;
         }
 
         private void setUseInNextBatch(bool use)

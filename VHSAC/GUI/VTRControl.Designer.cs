@@ -31,9 +31,9 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.statePanel_Reset = new System.Windows.Forms.Panel();
             this.stateLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.captureFilenameTextbox = new System.Windows.Forms.TextBox();
             this.captureFilenameLabel = new System.Windows.Forms.Label();
+            this.captureFilenameTextbox = new System.Windows.Forms.TextBox();
+            this.captureFilenameTextboxLabel = new System.Windows.Forms.Label();
             this.editDetailsButton = new System.Windows.Forms.Button();
             this.captureLengthLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
@@ -78,14 +78,14 @@
             this.stateLabel.TabIndex = 2;
             this.stateLabel.Text = "State: capturing";
             // 
-            // label1
+            // captureFilenameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "to example.avi";
+            this.captureFilenameLabel.AutoSize = true;
+            this.captureFilenameLabel.Location = new System.Drawing.Point(8, 51);
+            this.captureFilenameLabel.Name = "captureFilenameLabel";
+            this.captureFilenameLabel.Size = new System.Drawing.Size(75, 13);
+            this.captureFilenameLabel.TabIndex = 3;
+            this.captureFilenameLabel.Text = "to example.avi";
             // 
             // captureFilenameTextbox
             // 
@@ -95,14 +95,14 @@
             this.captureFilenameTextbox.TabIndex = 4;
             this.captureFilenameTextbox.TextChanged += new System.EventHandler(this.captureFilenameTextbox_TextChanged);
             // 
-            // captureFilenameLabel
+            // captureFilenameTextboxLabel
             // 
-            this.captureFilenameLabel.AutoSize = true;
-            this.captureFilenameLabel.Location = new System.Drawing.Point(7, 83);
-            this.captureFilenameLabel.Name = "captureFilenameLabel";
-            this.captureFilenameLabel.Size = new System.Drawing.Size(89, 13);
-            this.captureFilenameLabel.TabIndex = 5;
-            this.captureFilenameLabel.Text = "Capture filename:";
+            this.captureFilenameTextboxLabel.AutoSize = true;
+            this.captureFilenameTextboxLabel.Location = new System.Drawing.Point(7, 83);
+            this.captureFilenameTextboxLabel.Name = "captureFilenameTextboxLabel";
+            this.captureFilenameTextboxLabel.Size = new System.Drawing.Size(89, 13);
+            this.captureFilenameTextboxLabel.TabIndex = 5;
+            this.captureFilenameTextboxLabel.Text = "Capture filename:";
             // 
             // editDetailsButton
             // 
@@ -257,9 +257,9 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.captureLengthLabel);
             this.Controls.Add(this.editDetailsButton);
-            this.Controls.Add(this.captureFilenameLabel);
+            this.Controls.Add(this.captureFilenameTextboxLabel);
             this.Controls.Add(this.captureFilenameTextbox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.captureFilenameLabel);
             this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.statePanel_Reset);
             this.Controls.Add(this.nameLabel);
@@ -276,9 +276,9 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Panel statePanel_Reset;
         private System.Windows.Forms.Label stateLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox captureFilenameTextbox;
         private System.Windows.Forms.Label captureFilenameLabel;
+        private System.Windows.Forms.TextBox captureFilenameTextbox;
+        private System.Windows.Forms.Label captureFilenameTextboxLabel;
         private System.Windows.Forms.Button editDetailsButton;
         private System.Windows.Forms.Label captureLengthLabel;
         private System.Windows.Forms.Button startButton;
