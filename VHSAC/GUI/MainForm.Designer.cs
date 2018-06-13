@@ -1,6 +1,6 @@
 namespace VHSAC
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,33 @@ namespace VHSAC
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.vtrControllerContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.SuspendLayout();
+            // 
+            // vtrControllerContainer
+            // 
+            this.vtrControllerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtrControllerContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.vtrControllerContainer.Location = new System.Drawing.Point(0, 0);
+            this.vtrControllerContainer.Name = "vtrControllerContainer";
+            this.vtrControllerContainer.Size = new System.Drawing.Size(708, 450);
+            this.vtrControllerContainer.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(708, 450);
+            this.Controls.Add(this.vtrControllerContainer);
+            this.Name = "MainForm";
+            this.Text = "VHS Archivation Controller";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel vtrControllerContainer;
     }
 }
 

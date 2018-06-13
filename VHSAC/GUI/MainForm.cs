@@ -7,14 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VHSAC.GUI;
+using VHSAC.Model.VTR;
 
 namespace VHSAC
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+
+        public MainForm()
         {
             InitializeComponent();
+            loadVTRs();
         }
+
+        private void loadVTRs()
+        {
+            foreach(VTR vtr in Program.VTRs)
+            {
+                UserControl uc = new VTRControl(vtr);
+                vtrControllerContainer.Controls.Add(uc);
+            }
+        }
+
     }
 }
