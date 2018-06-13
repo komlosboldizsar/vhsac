@@ -26,8 +26,10 @@ namespace VHSAC.Model.VTR
             get { return _state; }
             set
             {
+                VTRState oldValue = _state;
                 _state = value;
-                StateChanged?.Invoke(this, value);
+                if (oldValue != value)
+                    StateChanged?.Invoke(this, value);
             }
         }
 
@@ -44,14 +46,56 @@ namespace VHSAC.Model.VTR
             get { return _captureLength; }
             set
             {
+                int oldValue = _captureLength;
                 _captureLength = value;
-                CaptureLengthChanged?.Invoke(this, value);
+                if (oldValue != value)
+                    CaptureLengthChanged?.Invoke(this, value);
             }
         }
 
         public delegate void CaptureLengthChangedHandler(VTR vtr, int newLength);
 
         public event CaptureLengthChangedHandler CaptureLengthChanged;
+        #endregion
+
+        #region Property: UseInNextBatch
+        private bool _useInNextBatch;
+
+        public bool UseInNextBatch
+        {
+            get { return _useInNextBatch; }
+            set
+            {
+                bool oldValue = _useInNextBatch;
+                _useInNextBatch = value;
+                if (oldValue != value)
+                    UseInNextBatchChanged?.Invoke(this, value);
+            }
+        }
+
+        public delegate void UseInNextBatchChangedHandler(VTR vtr, bool newValue);
+
+        public event UseInNextBatchChangedHandler UseInNextBatchChanged;
+        #endregion
+
+        #region Property: CaptureFilename
+        private string _captureFilename;
+
+        public string CaptureFilename
+        {
+            get { return _captureFilename; }
+            set
+            {
+                string oldValue = _captureFilename;
+                _captureFilename = value;
+                if(oldValue != value)
+                    CaptureFilenameChanged?.Invoke(this, value);
+            }
+        }
+
+        public delegate void CaptureFilenameChangedHandler(VTR vtr, string newCaptureFilename);
+
+        public event CaptureFilenameChangedHandler CaptureFilenameChanged;
         #endregion
 
         private Thread _mainCaptureThread;
@@ -163,7 +207,7 @@ namespace VHSAC.Model.VTR
 
                 _routerCrosspoints.ForEach(r => r.Take());
 
-                _capture = _captureDevice.StartCapture("random.avi");
+                _capture = _captureDevice.StartCapture(CaptureFilename);
                 _capture.LengthChanged += captureLengthChangedHandler;
                 _capture.StateChanged += captureStateChangedHandler;
                 Thread.Sleep(1000);
