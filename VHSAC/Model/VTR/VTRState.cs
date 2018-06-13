@@ -9,7 +9,9 @@ namespace VHSAC.Model.VTR
     public enum VTRState
     {
         Reset,
+        Starting,
         Capturing,
+        Stopping,
         Ready,
         ManuallyStopped,
         Failure

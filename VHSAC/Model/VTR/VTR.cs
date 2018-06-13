@@ -159,6 +159,8 @@ namespace VHSAC.Model.VTR
             try
             {
 
+                State = VTRState.Starting;
+
                 _routerCrosspoints.ForEach(r => r.Take());
 
                 _capture = _captureDevice.StartCapture("random.avi");
@@ -186,6 +188,8 @@ namespace VHSAC.Model.VTR
 
         private void stopCaptureProcess(StopReason reason)
         {
+
+            State = VTRState.Stopping;
 
             _stateCheckThread.Abort();
 
