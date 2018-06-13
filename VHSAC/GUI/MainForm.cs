@@ -18,7 +18,12 @@ namespace VHSAC
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             loadVTRs();
+            Logger.Logger.Handlers += NewLogMessageHandler;
         }
 
         private void loadVTRs()
@@ -46,6 +51,13 @@ namespace VHSAC
             BatchManager.ResetAll();
         }
         #endregion
+
+        private void NewLogMessageHandler(string message, DateTime timestamp)
+        {
+            string formattedMessage = string.Format("[{0}] {1}\r\n", timestamp.ToString("yyyy.MM.dd. HH:mm:ss"), message);
+            logMessagesTextbox.Text += formattedMessage;
+            logMessagesTextbox.ScrollToCaret();
+        }
 
     }
 }
