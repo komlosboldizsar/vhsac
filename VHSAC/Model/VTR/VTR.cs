@@ -77,6 +77,7 @@ namespace VHSAC.Model.VTR
                 throw new Exception(); // TODO: Exception message
             }
             _mainCaptureThread = new Thread(mainCaptureThreadMethod);
+            _mainCaptureThread.IsBackground = true;
             _mainCaptureThread.Start();
         }
 
@@ -169,6 +170,7 @@ namespace VHSAC.Model.VTR
                 Thread.Sleep(5000);
 
                 _stateCheckThread = new Thread(stateCheckThreadMethod);
+                _stateCheckThread.IsBackground = true;
                 _stateCheckThread.Start();
 
                 State = VTRState.Capturing;
