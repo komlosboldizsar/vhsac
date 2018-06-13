@@ -25,8 +25,9 @@ namespace VHSAC.GUI
             subscribeEvents();
 
             setNameLabel(_vtr.Name);
-            setStatePanel(_vtr.State);
-            setButtonsEnableState(_vtr.State);
+            updateByStateChange(_vtr.State);
+            setCaptureFilename(_vtr.CaptureFilename);
+            setUseInNextBatch(_vtr.UseInNextBatch);
             setCaptureLength(0);
 
         }
@@ -35,13 +36,15 @@ namespace VHSAC.GUI
         {
             _vtr.CaptureLengthChanged += vtrCaptureLengthChangedHandler;
             _vtr.StateChanged += vtrStateChangedHandler;
+            _vtr.CaptureFilenameChanged += vtrCaptureFilenameChangedHandler;
+            _vtr.UseInNextBatchChanged += vtrUseInNextBatchChangedHandler;
         }
 
+        #region Property change event handlers
         private void vtrStateChangedHandler(VTR vtr, VTRState newState)
         {
             this.InvokeIfRequired(vtrControl => {
-                vtrControl.setStatePanel(newState);
-                vtrControl.setButtonsEnableState(newState);
+                vtrControl.updateByStateChange(newState);
             });
         }
 
@@ -53,31 +56,39 @@ namespace VHSAC.GUI
             });
         }
 
+        private void vtrCaptureFilenameChangedHandler(VTR vtr, string newCaptureFilename)
+        {
+            setCaptureFilename(newCaptureFilename);
+        }
+
+        private void vtrUseInNextBatchChangedHandler(VTR vtr, bool newValue)
+        {
+            setUseInNextBatch(newValue);
+        }
+        #endregion
+
+        #region UI updater methods
         private void setNameLabel(string name)
         {
             nameLabel.Text = "VTR: " + name;
         }
 
-        private void setStatePanel(VTRState state)
+        private void updateByStateChange(VTRState newState)
         {
-            switch (state)
-            {
-                case VTRState.Reset:
-                    statePanel.BackColor = Color.LightBlue;
-                    break;
-                case VTRState.Capturing:
-                    statePanel.BackColor = Color.Red;
-                    break;
-                case VTRState.Ready:
-                    statePanel.BackColor = Color.Green;
-                    break;
-                case VTRState.ManuallyStopped:
-                    statePanel.BackColor = Color.DarkGreen;
-                    break;
-                case VTRState.Failure:
-                    statePanel.BackColor = Color.Orange;
-                    break;
-            }
+            setStatePanels(newState);
+            setButtonsEnableState(newState);
+            setOtherElementsEnableState(newState);
+        }
+
+        private void setStatePanels(VTRState state)
+        {
+            statePanel_Reset.BackColor = (state == VTRState.Reset) ? Color.Aqua : Color.White;
+            statePanel_Starting.BackColor = (state == VTRState.Starting) ? Color.Yellow : Color.White;
+            statePanel_Capturing.BackColor = (state == VTRState.Capturing) ? Color.DarkOrange : Color.White;
+            statePanel_Stopping.BackColor = (state == VTRState.Stopping) ? Color.Yellow : Color.White;
+            statePanel_Ready.BackColor = (state == VTRState.Ready) ? Color.Lime : Color.White;
+            statePanel_ManuallyStopped.BackColor = (state == VTRState.ManuallyStopped) ? Color.SeaGreen : Color.White;
+            statePanel_Failure.BackColor = (state == VTRState.Failure) ? Color.Red : Color.White;
         }
 
         private void setButtonsEnableState(VTRState state)
@@ -87,17 +98,33 @@ namespace VHSAC.GUI
             resetButton.Enabled = (state != VTRState.Capturing);
         }
 
-        private void setCaptureLength(int seconds)
+        private void setOtherElementsEnableState(VTRState state)
         {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => setCaptureLength(seconds)), null);
-                return;
-            }
-            TimeSpan ts = TimeSpan.FromSeconds(seconds);
-            captureLengthLabel.Text = string.Format("Capture length: {0:D2}:{1:D2}:{2:D2}", ts.Hours, ts.Minutes, ts.Seconds);
+            captureFilenameTextbox.Enabled = (state == VTRState.Reset);
+            useInNextBatchCheckbox.Enabled = (state == VTRState.Reset);
+            editDetailsButton.Enabled = (state == VTRState.Reset);
         }
 
+        private void setCaptureFilename(string captureFilename)
+        {
+            if (captureFilename != captureFilenameTextbox.Text)
+                captureFilenameTextbox.Text = captureFilename;
+        }
+
+        private void setUseInNextBatch(bool use)
+        {
+            if (use != useInNextBatchCheckbox.Checked)
+                useInNextBatchCheckbox.Checked = use;
+        }
+
+        private void setCaptureLength(int seconds)
+        {
+            TimeSpan ts = TimeSpan.FromSeconds(seconds);
+            captureLengthLabel.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", ts.Hours, ts.Minutes, ts.Seconds);
+        }
+        #endregion
+
+        #region Button click handlers
         private void startButton_Click(object sender, EventArgs e)
         {
             try
@@ -133,6 +160,19 @@ namespace VHSAC.GUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+
+        #region UI change handlers
+        private void captureFilenameTextbox_TextChanged(object sender, EventArgs e)
+        {
+            _vtr.CaptureFilename = captureFilenameTextbox.Text;
+        }
+
+        private void useInNextBatchCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            _vtr.UseInNextBatch = useInNextBatchCheckbox.Checked;
+        }
+        #endregion
 
     }
 }
