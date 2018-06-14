@@ -23,7 +23,7 @@ namespace VHSAC
         private void MainForm_Load(object sender, EventArgs e)
         {
             loadVTRs();
-            Logger.Logger.Handlers += NewLogMessageHandler;
+            Logging.Logger.Handlers += NewLogMessageHandler;
         }
 
         private void loadVTRs()

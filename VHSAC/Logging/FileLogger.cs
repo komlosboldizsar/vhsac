@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHSAC.Logger
+namespace VHSAC.Logging
 {
     public class FileLogger
     {

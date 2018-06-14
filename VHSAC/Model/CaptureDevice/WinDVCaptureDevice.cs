@@ -105,6 +105,7 @@ namespace VHSAC.Model.CaptureDevice
             {
                 if (State != CaptureState.WaitForStart)
                     throw new Exception("Can't start capture, because it's already started or stoppped!");
+                
                 _thread = new Thread(threadMethod);
                 _thread.IsBackground = true;
                 _thread.Start();

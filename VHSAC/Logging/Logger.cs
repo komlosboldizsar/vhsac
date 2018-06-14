@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VHSAC.Logger
+namespace VHSAC.Logging
 {
     public class Logger
     {
