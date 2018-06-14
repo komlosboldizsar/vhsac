@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VHSAC.Model.VTR;
+using VHSAC.GUI.Helpers;
 
 namespace VHSAC.GUI
 {
@@ -43,17 +44,26 @@ namespace VHSAC.GUI
 
         private void BatchManager_CanStartChanged(bool newValue)
         {
-            startBatchButton.Enabled = newValue;
+            this.InvokeIfRequired(control =>
+            {
+                control.startBatchButton.Enabled = newValue;
+            });
         }
 
         private void BatchManager_CanStopChanged(bool newValue)
         {
-            stopBatchButton.Enabled = newValue;
+            this.InvokeIfRequired(control =>
+            {
+                control.stopBatchButton.Enabled = newValue;
+            });
         }
 
         private void BatchManager_CanResetChanged(bool newValue)
         {
-            resetAllButton.Enabled = newValue;
+            this.InvokeIfRequired(control =>
+            {
+                control.resetAllButton.Enabled = newValue;
+            });
         }
 
         private void startBatchButton_Click(object sender, EventArgs e)
