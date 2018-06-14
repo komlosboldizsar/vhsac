@@ -24,7 +24,9 @@ namespace VHSAC.Logging
             {
                 using (StreamWriter sw = File.AppendText(_fileName))
                 {
-                    string formattedMessage = string.Format("[{0}] {1}", timestamp.ToString("yyyy.MM.dd. HH:mm:ss"), message);
+                    string timestampStr = timestamp.ToString("yyyy.MM.dd. HH:mm:ss");
+                    string typeStr = type.ToString().ToUpper();
+                    string formattedMessage = string.Format("[{0}] [{1}] {2}", timestampStr, typeStr, message);
                     sw.WriteLine(formattedMessage);
                 }
             }
