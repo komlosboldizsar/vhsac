@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using VHSAC.Logging;
 using VHSAC.Model;
 using VHSAC.Model.CaptureDevice;
 using VHSAC.Model.Router;
@@ -18,12 +19,19 @@ namespace VHSAC
         [STAThread]
         static void Main()
         {
+
+            _myFileLogger = new FileLogger("vhsac");
+
             loadXML();
             BatchManager.Init();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+
         }
+
+        private static FileLogger _myFileLogger;
 
         private static List<VTR> _vtrs = new List<VTR>();
         private static Dictionary<string, IRouter> _routers = new Dictionary<string, IRouter>();
