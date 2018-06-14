@@ -13,6 +13,11 @@ namespace VHSAC.Model.VTR
         public static void Init()
         {
             calculateGlobalState();
+            foreach (VTR vtr in Program.VTRs)
+            {
+                vtr.StateChanged += vtrStateChangedHandler;
+                vtr.UseInNextBatchChanged += vtrUseInNextBatchChanged;
+            }
         }
 
         public static void Start()
@@ -88,10 +93,21 @@ namespace VHSAC.Model.VTR
             currentVTR = null;
         }
 
+        private static void vtrStateChangedHandler(VTR vtr, VTRState newState)
+        {
+            calculateGlobalState();
+        }
+
+        private static void vtrUseInNextBatchChanged(VTR vtr, bool newValue)
+        {
+            calculateGlobalState();
+        }
+
         private static void calculateGlobalState()
         {
 
-            bool canStart = true;
+            bool canStart_allToUseReset = true;
+            bool canStart_haveVtrToUse = false;
             bool canStop = true;
             bool canReset = true;
             foreach (VTR vtr in Program.VTRs)
@@ -99,10 +115,12 @@ namespace VHSAC.Model.VTR
                 if ((vtr.State == VTRState.Starting) || (vtr.State == VTRState.Capturing) || (vtr.State == VTRState.Stopping))
                     canReset = false;
                 if (vtr.UseInNextBatch && (vtr.State != VTRState.Reset))
-                    canStart = false;
+                    canStart_allToUseReset = false;
+                if (vtr.UseInNextBatch)
+                    canStart_haveVtrToUse = true;
             }
 
-            CanStart = canStart;
+            CanStart = (canStart_allToUseReset && canStart_haveVtrToUse);
             CanStop = canStop;
             CanReset = canReset;
 

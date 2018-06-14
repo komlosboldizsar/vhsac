@@ -19,6 +19,7 @@ namespace VHSAC
         static void Main()
         {
             loadXML();
+            BatchManager.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

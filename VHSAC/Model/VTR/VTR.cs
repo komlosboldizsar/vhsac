@@ -59,7 +59,7 @@ namespace VHSAC.Model.VTR
         #endregion
 
         #region Property: UseInNextBatch
-        private bool _useInNextBatch;
+        private bool _useInNextBatch = true;
 
         public bool UseInNextBatch
         {
