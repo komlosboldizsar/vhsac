@@ -29,8 +29,8 @@ namespace VHSAC
         private void InitializeComponent()
         {
             this.vtrControllerContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.logMessagesTextbox = new System.Windows.Forms.TextBox();
             this.batchManagerControl1 = new VHSAC.GUI.BatchManagerControl();
+            this.logMessagesTextbox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // vtrControllerContainer
@@ -41,18 +41,9 @@ namespace VHSAC
             this.vtrControllerContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.vtrControllerContainer.Location = new System.Drawing.Point(0, 31);
             this.vtrControllerContainer.Name = "vtrControllerContainer";
-            this.vtrControllerContainer.Size = new System.Drawing.Size(539, 238);
+            this.vtrControllerContainer.Size = new System.Drawing.Size(539, 234);
             this.vtrControllerContainer.TabIndex = 0;
             this.vtrControllerContainer.WrapContents = false;
-            // 
-            // logMessagesTextbox
-            // 
-            this.logMessagesTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.logMessagesTextbox.Location = new System.Drawing.Point(0, 269);
-            this.logMessagesTextbox.Multiline = true;
-            this.logMessagesTextbox.Name = "logMessagesTextbox";
-            this.logMessagesTextbox.Size = new System.Drawing.Size(539, 92);
-            this.logMessagesTextbox.TabIndex = 0;
             // 
             // batchManagerControl1
             // 
@@ -63,6 +54,16 @@ namespace VHSAC
             this.batchManagerControl1.Size = new System.Drawing.Size(539, 31);
             this.batchManagerControl1.TabIndex = 0;
             // 
+            // logMessagesTextbox
+            // 
+            this.logMessagesTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logMessagesTextbox.Location = new System.Drawing.Point(0, 265);
+            this.logMessagesTextbox.Name = "logMessagesTextbox";
+            this.logMessagesTextbox.ReadOnly = true;
+            this.logMessagesTextbox.Size = new System.Drawing.Size(539, 96);
+            this.logMessagesTextbox.TabIndex = 0;
+            this.logMessagesTextbox.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -70,8 +71,8 @@ namespace VHSAC
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(539, 361);
             this.Controls.Add(this.vtrControllerContainer);
-            this.Controls.Add(this.batchManagerControl1);
             this.Controls.Add(this.logMessagesTextbox);
+            this.Controls.Add(this.batchManagerControl1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(555, 600);
             this.Name = "MainForm";
@@ -85,8 +86,8 @@ namespace VHSAC
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel vtrControllerContainer;
-        private System.Windows.Forms.TextBox logMessagesTextbox;
         private GUI.BatchManagerControl batchManagerControl1;
+        private System.Windows.Forms.RichTextBox logMessagesTextbox;
     }
 }
 

@@ -42,8 +42,21 @@ namespace VHSAC
             string formattedMessage = string.Format("[{0}] {1}\r\n", timestamp.ToString("yyyy.MM.dd. HH:mm:ss"), message);
             this.InvokeIfRequired(control =>
             {
-                control.logMessagesTextbox.Text += formattedMessage;
+                Color textColor;
+                switch (type)
+                {
+                    case LogMessageType.Error:
+                        textColor = Color.Red;
+                        break;
+                    case LogMessageType.Info:
+                    default:
+                        textColor = Color.Black;
+                        break;
+                }
+                control.logMessagesTextbox.SelectionColor = textColor;
+                control.logMessagesTextbox.AppendText(formattedMessage);
                 control.logMessagesTextbox.ScrollToCaret();
+                control.logMessagesTextbox.SelectionColor = Color.Black;
             });
         }
 
