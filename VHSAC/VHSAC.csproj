@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\BatchManagerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\BatchManagerControl.Designer.cs">
+      <DependentUpon>BatchManagerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Helpers\MultithreadUI.cs" />
     <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,9 @@
     <Compile Include="Model\VTRController\Controller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\BatchManagerControl.resx">
+      <DependentUpon>BatchManagerControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
