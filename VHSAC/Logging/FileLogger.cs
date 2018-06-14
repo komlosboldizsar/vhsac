@@ -12,22 +12,29 @@ namespace VHSAC.Logging
 
         private string _fileName;
 
-        public FileLogger(string fileName)
+        public FileLogger(string fileNamePrefix)
         {
-            _fileName = fileName;
+            string fileNameTimestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+            _fileName = string.Format("{0}-{1}.log", fileNamePrefix, fileNameTimestamp);
+            writeToFile("-- Start of log --");
             Logger.Handlers += NewLogMessageHandler;
         }
 
         public void NewLogMessageHandler(string message, LogMessageType type, DateTime timestamp)
         {
+            string timestampStr = timestamp.ToString("yyyy.MM.dd. HH:mm:ss");
+            string typeStr = type.ToString().ToUpper();
+            string formattedMessage = string.Format("[{0}] [{1}] {2}", timestampStr, typeStr, message);
+            writeToFile(formattedMessage);
+        }
+
+        private void writeToFile(string str)
+        {
             try
             {
                 using (StreamWriter sw = File.AppendText(_fileName))
                 {
-                    string timestampStr = timestamp.ToString("yyyy.MM.dd. HH:mm:ss");
-                    string typeStr = type.ToString().ToUpper();
-                    string formattedMessage = string.Format("[{0}] [{1}] {2}", timestampStr, typeStr, message);
-                    sw.WriteLine(formattedMessage);
+                    sw.WriteLine(str);
                 }
             }
             catch
