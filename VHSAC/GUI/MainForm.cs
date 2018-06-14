@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VHSAC.GUI;
+using VHSAC.GUI.Helpers;
 using VHSAC.Model.VTR;
 
 namespace VHSAC
@@ -38,8 +39,11 @@ namespace VHSAC
         private void NewLogMessageHandler(string message, DateTime timestamp)
         {
             string formattedMessage = string.Format("[{0}] {1}\r\n", timestamp.ToString("yyyy.MM.dd. HH:mm:ss"), message);
-            logMessagesTextbox.Text += formattedMessage;
-            logMessagesTextbox.ScrollToCaret();
+            this.InvokeIfRequired(control =>
+            {
+                control.logMessagesTextbox.Text += formattedMessage;
+                control.logMessagesTextbox.ScrollToCaret();
+            });
         }
 
     }
