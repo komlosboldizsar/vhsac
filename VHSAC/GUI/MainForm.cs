@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VHSAC.GUI;
 using VHSAC.GUI.Helpers;
+using VHSAC.Logging;
 using VHSAC.Model.VTR;
 
 namespace VHSAC
@@ -24,7 +25,7 @@ namespace VHSAC
         private void MainForm_Load(object sender, EventArgs e)
         {
             loadVTRs();
-            Logging.Logger.Handlers += NewLogMessageHandler;
+            Logger.Handlers += NewLogMessageHandler;
         }
 
         private void loadVTRs()
@@ -36,7 +37,7 @@ namespace VHSAC
             }
         }
 
-        private void NewLogMessageHandler(string message, DateTime timestamp)
+        private void NewLogMessageHandler(string message, LogMessageType type, DateTime timestamp)
         {
             string formattedMessage = string.Format("[{0}] {1}\r\n", timestamp.ToString("yyyy.MM.dd. HH:mm:ss"), message);
             this.InvokeIfRequired(control =>

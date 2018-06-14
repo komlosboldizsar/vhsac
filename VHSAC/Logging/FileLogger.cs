@@ -18,7 +18,7 @@ namespace VHSAC.Logging
             Logger.Handlers += NewLogMessageHandler;
         }
 
-        public void NewLogMessageHandler(string message, DateTime timestamp)
+        public void NewLogMessageHandler(string message, LogMessageType type, DateTime timestamp)
         {
             try
             {

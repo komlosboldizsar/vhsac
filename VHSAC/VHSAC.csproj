@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Logging\FileLogger.cs" />
     <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LogMessageType.cs" />
     <Compile Include="Model\CaptureDevice\CaptureState.cs" />
     <Compile Include="Model\CaptureDevice\ICapture.cs" />
     <Compile Include="Model\CaptureDevice\ICaptureDevice.cs" />
