@@ -64,6 +64,7 @@
     <Compile Include="GUI\VTRControl.Designer.cs">
       <DependentUpon>VTRControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logging\HtmlLogger.cs" />
     <Compile Include="Logging\FileLogger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LogMessageType.cs" />

@@ -21,6 +21,7 @@ namespace VHSAC
         {
 
             _myFileLogger = new FileLogger("vhsac");
+            _myHtmlLogger = new HtmlLogger("vhsac");
 
             loadXML();
             BatchManager.Init();
@@ -32,6 +33,7 @@ namespace VHSAC
         }
 
         private static FileLogger _myFileLogger;
+        private static HtmlLogger _myHtmlLogger;
 
         private static List<VTR> _vtrs = new List<VTR>();
         private static Dictionary<string, IRouter> _routers = new Dictionary<string, IRouter>();
