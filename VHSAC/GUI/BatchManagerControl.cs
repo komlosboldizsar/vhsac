@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VHSAC.Model.VTR;
 using VHSAC.GUI.Helpers;
@@ -68,17 +61,39 @@ namespace VHSAC.GUI
 
         private void startBatchButton_Click(object sender, EventArgs e)
         {
-            BatchManager.Start();
+            try
+            {
+                BatchManager.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void stopBatchButton_Click(object sender, EventArgs e)
         {
-            BatchManager.Stop();
+            try
+            {
+                BatchManager.Stop();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void resetAllButton_Click(object sender, EventArgs e)
         {
-            BatchManager.ResetAll();
+            try
+            {
+                BatchManager.ResetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }
