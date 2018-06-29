@@ -26,7 +26,7 @@ namespace VHSAC.Model.VTR
             // Check states
             foreach (VTR vtr in Program.VTRs)
                 if (vtr.UseInNextBatch && (vtr.State != VTRState.Reset))
-                    throw new Exception(/* TODO */);
+                    throw new Exception("Can't start batch, because not all selected VTRs are in 'reset' state!");
 
             startNextVTR();
 
@@ -50,7 +50,7 @@ namespace VHSAC.Model.VTR
             // Check states
             foreach (VTR vtr in Program.VTRs)
                 if ((vtr.State == VTRState.Starting) || (vtr.State == VTRState.Capturing) || (vtr.State == VTRState.Stopping))
-                    throw new Exception(/* TODO */);
+                    throw new Exception("Can't reset all VTRs, because some of them haven't finished capturing!");
 
             // Reset all
             foreach (VTR vtr in Program.VTRs)

@@ -118,7 +118,7 @@ namespace VHSAC.Model.VTR
         {
             if(State != VTRState.Reset)
             {
-                throw new Exception(); // TODO: Exception message
+                throw new Exception("VTR must be in 'reset' state to start capture!");
             }
             _mainCaptureThread = new Thread(mainCaptureThreadMethod);
             _mainCaptureThread.IsBackground = true;
@@ -129,7 +129,7 @@ namespace VHSAC.Model.VTR
         {
             if(State != VTRState.Capturing)
             {
-                throw new Exception(); // TODO: Exception message
+                throw new Exception("VTR can only be stopped when it's capturing!");
             }
             _stopManually.Set();
         }
