@@ -39,9 +39,10 @@ namespace VHSAC
             this.vtrControllerContainer.AutoSize = true;
             this.vtrControllerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtrControllerContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.vtrControllerContainer.Location = new System.Drawing.Point(0, 31);
+            this.vtrControllerContainer.Location = new System.Drawing.Point(0, 38);
+            this.vtrControllerContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.vtrControllerContainer.Name = "vtrControllerContainer";
-            this.vtrControllerContainer.Size = new System.Drawing.Size(539, 234);
+            this.vtrControllerContainer.Size = new System.Drawing.Size(1132, 498);
             this.vtrControllerContainer.TabIndex = 0;
             this.vtrControllerContainer.WrapContents = false;
             // 
@@ -50,31 +51,34 @@ namespace VHSAC
             this.batchManagerControl1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.batchManagerControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.batchManagerControl1.Location = new System.Drawing.Point(0, 0);
+            this.batchManagerControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.batchManagerControl1.Name = "batchManagerControl1";
-            this.batchManagerControl1.Size = new System.Drawing.Size(539, 31);
+            this.batchManagerControl1.Size = new System.Drawing.Size(1132, 38);
             this.batchManagerControl1.TabIndex = 0;
             // 
             // logMessagesTextbox
             // 
             this.logMessagesTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.logMessagesTextbox.Location = new System.Drawing.Point(0, 265);
+            this.logMessagesTextbox.Location = new System.Drawing.Point(0, 536);
+            this.logMessagesTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logMessagesTextbox.Name = "logMessagesTextbox";
             this.logMessagesTextbox.ReadOnly = true;
-            this.logMessagesTextbox.Size = new System.Drawing.Size(539, 96);
+            this.logMessagesTextbox.Size = new System.Drawing.Size(1132, 117);
             this.logMessagesTextbox.TabIndex = 0;
             this.logMessagesTextbox.Text = "";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(539, 361);
+            this.ClientSize = new System.Drawing.Size(1132, 653);
             this.Controls.Add(this.vtrControllerContainer);
             this.Controls.Add(this.logMessagesTextbox);
             this.Controls.Add(this.batchManagerControl1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(555, 600);
+            this.MaximumSize = new System.Drawing.Size(1150, 1000);
             this.Name = "MainForm";
             this.Text = "VHS Archivation Controller";
             this.Load += new System.EventHandler(this.MainForm_Load);

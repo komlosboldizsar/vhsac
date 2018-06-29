@@ -209,6 +209,5 @@ namespace VHSAC.GUI
             _vtr.UseInNextBatch = useInNextBatchCheckbox.Checked;
         }
         #endregion
-
     }
 }
