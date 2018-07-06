@@ -117,7 +117,7 @@ namespace VHSAC
                 string name = node.Attributes.GetNamedItem("name").Value;
                 if (node.Name == "windvcapture")
                 {
-                    ICaptureDevice captureDevice = new WinDVCaptureDevice(/*name*/);
+                    ICaptureDevice captureDevice = new WinDVCaptureDevice(name);
                     _captureDevices.Add(id, captureDevice);
                 }
             }

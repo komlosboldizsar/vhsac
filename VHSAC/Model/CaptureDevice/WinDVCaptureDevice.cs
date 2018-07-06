@@ -17,9 +17,18 @@ namespace VHSAC.Model.CaptureDevice
 
         private static readonly int WINDV_CAPTURE_LENGTH = 3600 * (4 + 1);
 
+        #region Property: Name
+        private string _name;
+
         public string Name
         {
             get => "";
+        }
+        #endregion
+
+        public WinDVCaptureDevice(String name)
+        {
+            _name = name;
         }
 
         public ICapture StartCapture(VTR.VTR vtr, string fileName, CaptureMetadata metadata)
