@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using VHSAC.Logging;
@@ -134,15 +132,15 @@ namespace VHSAC
                 string controllerChannelStr = node.Attributes.GetNamedItem("controllerchannel").Value;
 
                 if (!_captureDevices.ContainsKey(captureDeviceId))
-                    throw new Exception(/* TODO */);
+                    throw new Exception(string.Format("Can't find capture device with the ID '{0}'!", captureDeviceId));
                 ICaptureDevice captureDevice = _captureDevices[captureDeviceId];
 
                 if (!_controllers.ContainsKey(controllerId))
-                    throw new Exception(/* TODO */);
+                    throw new Exception(string.Format("Can't find controller with the ID '{0}'!", captureDeviceId));
                 Controller controller = _controllers[controllerId];
 
-                if (!int.TryParse(controllerChannelStr, out int controllerChannel))
-                    throw new Exception(/* TODO */);
+                if (!int.TryParse(controllerChannelStr, out int controllerChannel) || (controllerChannel < 0))
+                    throw new Exception(string.Format("'{0}' is not a valid number for controller channel!", controllerChannelStr));
                 Controller.Adapter controllerAdapter = controller.GetAdapter(controllerChannel);
 
                 List<IRouterCrosspoint> routerCrosspoints = new List<IRouterCrosspoint>();
@@ -151,7 +149,7 @@ namespace VHSAC
 
                     string routerId = childNode.Attributes.GetNamedItem("router").Value;
                     if (!_routers.ContainsKey(routerId))
-                        throw new Exception(/* TODO */);
+                        throw new Exception(string.Format("Can't find router with the ID '{0}'!", routerId));
                     IRouter router = _routers[routerId];
 
                     if (childNode.Name == "leitchcrosspoint")
@@ -159,19 +157,19 @@ namespace VHSAC
 
                         LeitchRouter leitchRouter = router as LeitchRouter;
                         if(leitchRouter == null)
-                            throw new Exception(/* TODO */);
+                            throw new Exception(string.Format("The router with ID '{0}' is not a Leitch router!", routerId));
 
                         string levelStr = childNode.Attributes.GetNamedItem("level").Value;
                         if (!int.TryParse(levelStr, out int level) || (level < 0))
-                            throw new Exception(/* TODO */);
+                            throw new Exception(string.Format("'{0}' is not a valid number for Leitch crosspoint level!", level));
 
                         string destinationStr = childNode.Attributes.GetNamedItem("destination").Value;
                         if (!int.TryParse(destinationStr, out int destination) || (destination < 0))
-                            throw new Exception(/* TODO */);
+                            throw new Exception(string.Format("'{0}' is not a valid number for Leitch crosspoint destination!", destination));
 
                         string sourceStr = childNode.Attributes.GetNamedItem("source").Value;
                         if (!int.TryParse(sourceStr, out int source) || (source < 0))
-                            throw new Exception(/* TODO */);
+                            throw new Exception(string.Format("'{0}' is not a valid number for Leitch crosspoint source!", source));
 
                         IRouterCrosspoint crosspoint = leitchRouter.GetCrosspoint(level, destination, source);
                         routerCrosspoints.Add(crosspoint);
