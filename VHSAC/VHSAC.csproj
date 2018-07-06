@@ -58,6 +58,12 @@
     <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MetadataEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MetadataEditorForm.Designer.cs">
+      <DependentUpon>MetadataEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\VTRControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,6 +74,7 @@
     <Compile Include="Logging\FileLogger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LogMessageType.cs" />
+    <Compile Include="Model\Metadata\CaptureMetadata.cs" />
     <Compile Include="Model\CaptureDevice\CaptureState.cs" />
     <Compile Include="Model\CaptureDevice\ICapture.cs" />
     <Compile Include="Model\CaptureDevice\ICaptureDevice.cs" />
@@ -88,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MetadataEditorForm.resx">
+      <DependentUpon>MetadataEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\VTRControl.resx">
       <DependentUpon>VTRControl.cs</DependentUpon>
