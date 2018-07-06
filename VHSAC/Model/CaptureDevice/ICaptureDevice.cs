@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VHSAC.Model.Metadata;
 
 namespace VHSAC.Model.CaptureDevice
 {
     public interface ICaptureDevice
     {
-        ICapture StartCapture(string fileName);
+
+        ICapture StartCapture(VTR.VTR vtr, string fileName, CaptureMetadata metadata);
         void StopCapture();
+
+        string Name { get; }
+
     }
 }

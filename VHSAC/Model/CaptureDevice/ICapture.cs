@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VHSAC.Model.Metadata;
 
 namespace VHSAC.Model.CaptureDevice
 {
@@ -17,6 +13,10 @@ namespace VHSAC.Model.CaptureDevice
 
         int Length { get; }
         event CaptureLengthChangedHandler LengthChanged;
+
+        CaptureMetadata Metadata { get; }
+        ICaptureDevice Device { get; }
+        VTR.VTR UsedVTR { get; }
 
     }
 

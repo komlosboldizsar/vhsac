@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using VHSAC.Model.CaptureDevice;
+using VHSAC.Model.Metadata;
 using VHSAC.Model.Router;
 using VHSAC.Model.VTRController;
 
@@ -88,7 +89,7 @@ namespace VHSAC.Model.VTR
             {
                 string oldValue = _captureFilename;
                 _captureFilename = value;
-                if(oldValue != value)
+                if (oldValue != value)
                     CaptureFilenameChanged?.Invoke(this, value);
             }
         }
@@ -96,6 +97,15 @@ namespace VHSAC.Model.VTR
         public delegate void CaptureFilenameChangedHandler(VTR vtr, string newCaptureFilename);
 
         public event CaptureFilenameChangedHandler CaptureFilenameChanged;
+        #endregion
+
+        #region Property: CaptureMetadata
+        private CaptureMetadata _captureMetadata = new CaptureMetadata();
+
+        public CaptureMetadata CaptureMetadata
+        {
+            get => _captureMetadata;
+        }
         #endregion
 
         private Thread _mainCaptureThread;
@@ -142,6 +152,7 @@ namespace VHSAC.Model.VTR
                 throw new Exception(errMsg);
             }
             State = VTRState.Reset;
+            _captureMetadata = new CaptureMetadata();
         }
 
         private readonly static int UNKNOWN_STATE_LIMIT = 5;
@@ -207,7 +218,7 @@ namespace VHSAC.Model.VTR
 
                 _routerCrosspoints.ForEach(r => r.Take());
 
-                _capture = _captureDevice.StartCapture(CaptureFilename);
+                _capture = _captureDevice.StartCapture(this, CaptureFilename, _captureMetadata);
                 _capture.LengthChanged += captureLengthChangedHandler;
                 _capture.StateChanged += captureStateChangedHandler;
                 Thread.Sleep(1000);

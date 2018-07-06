@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using VHSAC.Model.Metadata;
 
 namespace VHSAC.Model.CaptureDevice
 {
@@ -20,13 +17,18 @@ namespace VHSAC.Model.CaptureDevice
 
         private static readonly int WINDV_CAPTURE_LENGTH = 3600 * (4 + 1);
 
-        public ICapture StartCapture(string fileName)
+        public string Name
+        {
+            get => "";
+        }
+
+        public ICapture StartCapture(VTR.VTR vtr, string fileName, CaptureMetadata metadata)
         {
             lock(_syncRoot)
             {
                 if (_currentCapture != null)
                     throw new Exception("Can't start capture, because device is already used!");
-                _currentCapture = new Capture(this, fileName);
+                _currentCapture = new Capture(this, vtr, fileName, metadata);
                 _currentCapture.Start();
                 return _currentCapture;
             }
@@ -52,7 +54,10 @@ namespace VHSAC.Model.CaptureDevice
         {
 
             private WinDVCaptureDevice _device;
+            private VTR.VTR _vtr;
+            
             private string _fileName;
+            private CaptureMetadata _metadata;
 
             private Thread _thread;
             private Process _process;
@@ -61,12 +66,14 @@ namespace VHSAC.Model.CaptureDevice
             private ManualResetEvent _stopRequest = new ManualResetEvent(false);
             private ManualResetEvent _stopFailure = new ManualResetEvent(false);
 
-            public Capture(WinDVCaptureDevice device, string fileName)
+            public Capture(WinDVCaptureDevice device, VTR.VTR vtr, string fileName, CaptureMetadata metadata)
             {
                 if (fileName == "")
                     throw new Exception("Filename for capture can't be empty!");
                 _device = device;
+                _vtr = vtr;
                 _fileName = fileName;
+                _metadata = metadata;
             }
 
             #region Property: State
@@ -99,6 +106,20 @@ namespace VHSAC.Model.CaptureDevice
             }
             
             public event CaptureLengthChangedHandler LengthChanged;
+            #endregion
+
+            #region Public properties
+            public CaptureMetadata Metadata {
+                get => _metadata;
+            }
+
+            public ICaptureDevice Device {
+                get => _device;
+            }
+
+            public VTR.VTR UsedVTR {
+                get => _vtr;
+            }
             #endregion
 
             public void Start()
