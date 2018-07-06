@@ -124,12 +124,16 @@ namespace VHSAC.Model.CaptureDevice
 
             public void Start()
             {
+
                 if (State != CaptureState.WaitForStart)
                     throw new Exception("Can't start capture, because it's already started or stoppped!");
-                
+
+                MetadataWriter.Write(this);
+
                 _thread = new Thread(threadMethod);
                 _thread.IsBackground = true;
                 _thread.Start();
+
             }
 
             public void Stop()

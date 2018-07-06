@@ -7,6 +7,7 @@ using System.Xml;
 using VHSAC.Logging;
 using VHSAC.Model;
 using VHSAC.Model.CaptureDevice;
+using VHSAC.Model.Metadata;
 using VHSAC.Model.Router;
 using VHSAC.Model.VTR;
 using VHSAC.Model.VTRController;
@@ -25,6 +26,7 @@ namespace VHSAC
 
             loadXML();
             BatchManager.Init();
+            MetadataWriter.Init();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
