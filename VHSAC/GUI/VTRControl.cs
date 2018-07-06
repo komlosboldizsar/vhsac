@@ -196,6 +196,12 @@ namespace VHSAC.GUI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void editDetailsButton_Click(object sender, EventArgs e)
+        {
+            MetadataEditorForm editorForm = new MetadataEditorForm(_vtr.CaptureMetadata);
+            editorForm.ShowDialog();
+        }
         #endregion
 
         #region UI change handlers
@@ -209,5 +215,6 @@ namespace VHSAC.GUI
             _vtr.UseInNextBatch = useInNextBatchCheckbox.Checked;
         }
         #endregion
+
     }
 }

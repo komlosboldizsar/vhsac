@@ -66,7 +66,7 @@
             this.statePanel_Reset.BackColor = System.Drawing.Color.Aqua;
             this.statePanel_Reset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_Reset.Location = new System.Drawing.Point(779, 10);
-            this.statePanel_Reset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_Reset.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_Reset.Name = "statePanel_Reset";
             this.statePanel_Reset.Size = new System.Drawing.Size(37, 34);
             this.statePanel_Reset.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             this.captureFilenameTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.captureFilenameTextbox.Location = new System.Drawing.Point(136, 61);
-            this.captureFilenameTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.captureFilenameTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.captureFilenameTextbox.Name = "captureFilenameTextbox";
             this.captureFilenameTextbox.Size = new System.Drawing.Size(168, 22);
             this.captureFilenameTextbox.TabIndex = 4;
@@ -116,12 +116,13 @@
             // 
             this.editDetailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.editDetailsButton.Location = new System.Drawing.Point(313, 57);
-            this.editDetailsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editDetailsButton.Margin = new System.Windows.Forms.Padding(4);
             this.editDetailsButton.Name = "editDetailsButton";
             this.editDetailsButton.Size = new System.Drawing.Size(100, 28);
             this.editDetailsButton.TabIndex = 6;
             this.editDetailsButton.Text = "Edit details";
             this.editDetailsButton.UseVisualStyleBackColor = true;
+            this.editDetailsButton.Click += new System.EventHandler(this.editDetailsButton_Click);
             // 
             // captureLengthLabel
             // 
@@ -140,7 +141,7 @@
             // 
             this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.startButton.Location = new System.Drawing.Point(735, 57);
-            this.startButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startButton.Margin = new System.Windows.Forms.Padding(4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(80, 28);
             this.startButton.TabIndex = 8;
@@ -152,7 +153,7 @@
             // 
             this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stopButton.Location = new System.Drawing.Point(823, 57);
-            this.stopButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(4);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(80, 28);
             this.stopButton.TabIndex = 9;
@@ -164,7 +165,7 @@
             // 
             this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.resetButton.Location = new System.Drawing.Point(911, 57);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(4);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(80, 28);
             this.resetButton.TabIndex = 10;
@@ -178,7 +179,7 @@
             this.statePanel_Starting.BackColor = System.Drawing.Color.Yellow;
             this.statePanel_Starting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_Starting.Location = new System.Drawing.Point(839, 10);
-            this.statePanel_Starting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_Starting.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_Starting.Name = "statePanel_Starting";
             this.statePanel_Starting.Size = new System.Drawing.Size(37, 34);
             this.statePanel_Starting.TabIndex = 2;
@@ -189,7 +190,7 @@
             this.statePanel_Capturing.BackColor = System.Drawing.Color.DarkOrange;
             this.statePanel_Capturing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_Capturing.Location = new System.Drawing.Point(885, 10);
-            this.statePanel_Capturing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_Capturing.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_Capturing.Name = "statePanel_Capturing";
             this.statePanel_Capturing.Size = new System.Drawing.Size(37, 34);
             this.statePanel_Capturing.TabIndex = 2;
@@ -200,7 +201,7 @@
             this.statePanel_Stopping.BackColor = System.Drawing.Color.Yellow;
             this.statePanel_Stopping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_Stopping.Location = new System.Drawing.Point(930, 10);
-            this.statePanel_Stopping.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_Stopping.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_Stopping.Name = "statePanel_Stopping";
             this.statePanel_Stopping.Size = new System.Drawing.Size(37, 34);
             this.statePanel_Stopping.TabIndex = 2;
@@ -211,7 +212,7 @@
             this.statePanel_Ready.BackColor = System.Drawing.Color.Lime;
             this.statePanel_Ready.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_Ready.Location = new System.Drawing.Point(991, 10);
-            this.statePanel_Ready.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_Ready.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_Ready.Name = "statePanel_Ready";
             this.statePanel_Ready.Size = new System.Drawing.Size(37, 34);
             this.statePanel_Ready.TabIndex = 2;
@@ -222,7 +223,7 @@
             this.statePanel_ManuallyStopped.BackColor = System.Drawing.Color.SeaGreen;
             this.statePanel_ManuallyStopped.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_ManuallyStopped.Location = new System.Drawing.Point(1036, 10);
-            this.statePanel_ManuallyStopped.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_ManuallyStopped.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_ManuallyStopped.Name = "statePanel_ManuallyStopped";
             this.statePanel_ManuallyStopped.Size = new System.Drawing.Size(37, 34);
             this.statePanel_ManuallyStopped.TabIndex = 2;
@@ -233,7 +234,7 @@
             this.statePanel_Failure.BackColor = System.Drawing.Color.Red;
             this.statePanel_Failure.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statePanel_Failure.Location = new System.Drawing.Point(1097, 10);
-            this.statePanel_Failure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statePanel_Failure.Margin = new System.Windows.Forms.Padding(4);
             this.statePanel_Failure.Name = "statePanel_Failure";
             this.statePanel_Failure.Size = new System.Drawing.Size(37, 34);
             this.statePanel_Failure.TabIndex = 11;
@@ -255,7 +256,7 @@
             this.useInNextBatchCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.useInNextBatchCheckbox.AutoSize = true;
             this.useInNextBatchCheckbox.Location = new System.Drawing.Point(999, 60);
-            this.useInNextBatchCheckbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.useInNextBatchCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.useInNextBatchCheckbox.Name = "useInNextBatchCheckbox";
             this.useInNextBatchCheckbox.Size = new System.Drawing.Size(139, 21);
             this.useInNextBatchCheckbox.TabIndex = 13;
