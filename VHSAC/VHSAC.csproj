@@ -79,6 +79,7 @@
     <Compile Include="Model\CaptureDevice\ICapture.cs" />
     <Compile Include="Model\CaptureDevice\ICaptureDevice.cs" />
     <Compile Include="Model\CaptureDevice\WinDVCaptureDevice.cs" />
+    <Compile Include="Model\Metadata\MetadataWriter.cs" />
     <Compile Include="Model\Router\IRouter.cs" />
     <Compile Include="Model\Router\IRouterCrosspoint.cs" />
     <Compile Include="Model\Router\LeitchRouter.cs" />
